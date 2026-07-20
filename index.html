@@ -1,1 +1,356 @@
-hi
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepak BHAI shop</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blackTheme: '#000000',
+            brandOrange: '#FF5722',
+            brandOrangeHover: '#E64A19',
+            meeshoGreen: '#038d63'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Scrollbar Hide */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .animate-fade-in { animation: fadeIn 0.25s ease-out forwards; }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- ================= 1. SPLASH SCREEN (1ST IMAGE STYLE) ================= -->
+  <div id="splash-screen" class="fixed inset-0 bg-[#4A0033] z-50 flex flex-col items-center justify-center text-white transition-opacity duration-700">
+    <div class="w-28 h-28 bg-transparent text-[#FF9800] rounded-3xl flex items-center justify-center text-8xl font-black mb-4 animate-bounce">
+      db
+    </div>
+    <h1 class="text-3xl font-extrabold tracking-wide mb-1 text-white">Deepak BHAI shop</h1>
+    <p class="text-sm font-medium text-pink-200 animate-pulse">Welcome to Deepak BHAI shop</p>
+  </div>
+
+  <!-- ================= 2. MAIN APP SCREEN (2ND IMAGE STYLE + BLACK THEME) ================= -->
+  <div id="app" class="max-w-md mx-auto bg-white min-h-screen pb-20 border shadow-2xl relative hidden">
+
+    <!-- Header Bar -->
+    <div class="bg-white px-3 py-2.5 flex items-center justify-between border-b sticky top-0 z-30">
+      <div class="flex items-center space-x-2">
+        <div onclick="openLoginModal()" class="w-9 h-9 rounded-full bg-blackTheme text-white font-black flex items-center justify-center text-xs cursor-pointer shadow active:scale-95 transition" title="Profile / Login">
+          DB
+        </div>
+        <button onclick="showMessage('Refer & Earn Active!')" class="bg-gray-100 border border-gray-300 text-blackTheme text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1 active:scale-95 transition">
+          🎁 Refer and Earn
+        </button>
+      </div>
+      <div class="flex items-center space-x-4 text-gray-800 text-lg">
+        <i onclick="showMessage('Wishlist section')" class="fa-regular fa-heart cursor-pointer hover:text-blackTheme transition"></i>
+        <div onclick="openLoginModal()" class="relative cursor-pointer">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="absolute -top-2 -right-2 bg-blackTheme text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="bg-white px-3 py-2 border-b">
+      <div class="flex items-center bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-500 shadow-sm">
+        <i class="fa-solid fa-magnifying-glass mr-2 text-gray-400"></i>
+        <input id="search-input" type="text" onkeyup="filterProducts()" placeholder="Search by Keyword or Product ID" class="w-full bg-transparent text-sm focus:outline-none text-gray-800" />
+        <i onclick="showMessage('Voice Search Active')" class="fa-solid fa-microphone mx-2 cursor-pointer text-gray-400 hover:text-blackTheme"></i>
+        <i onclick="showMessage('Camera Search Active')" class="fa-solid fa-camera cursor-pointer text-gray-400 hover:text-blackTheme"></i>
+      </div>
+    </div>
+
+    <!-- Category Slider -->
+    <div class="bg-white py-3 px-2 overflow-x-auto border-b no-scrollbar flex space-x-3" id="category-container"></div>
+
+    <!-- Filters Bar -->
+    <div class="bg-white py-2 px-3 flex items-center justify-between text-xs font-semibold text-gray-700 border-b">
+      <button onclick="showMessage('Sorting Options')" class="flex items-center gap-1 hover:text-blackTheme">⇅ Sort</button>
+      <button onclick="showMessage('Category Selected')" class="flex items-center gap-1 hover:text-blackTheme">Category ▾</button>
+      <button onclick="showMessage('Gender Selected')" class="flex items-center gap-1 hover:text-blackTheme">Gender ▾</button>
+      <button onclick="showMessage('Filters Opened')" class="flex items-center gap-1 hover:text-blackTheme"><i class="fa-solid fa-filter text-[10px]"></i> Filters</button>
+    </div>
+
+    <!-- 50 Products Grid -->
+    <div class="p-2 grid grid-cols-2 gap-2 bg-gray-100" id="product-grid"></div>
+
+    <!-- Floating Banner -->
+    <div onclick="showMessage('Refer & Earn ₹100 Instant Cash!')" class="fixed bottom-16 right-3 z-20 w-44 bg-amber-400 rounded-xl p-2 shadow-2xl border-2 border-amber-300 cursor-pointer active:scale-95 transition">
+      <div class="text-center font-black text-amber-950 text-[11px] tracking-wide">REFER & EARN</div>
+      <div class="bg-blackTheme text-amber-300 text-center text-[10px] font-extrabold rounded py-0.5 mt-1 shadow">₹100 INSTANT CASH</div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t flex justify-around py-1.5 text-gray-500 z-30">
+      <div onclick="navClick('Home')" class="flex flex-col items-center text-blackTheme font-bold text-[10px] cursor-pointer">
+        <i class="fa-solid fa-house text-lg"></i>
+        <span>Home</span>
+      </div>
+      <div onclick="navClick('Categories')" class="flex flex-col items-center text-[10px] hover:text-blackTheme cursor-pointer">
+        <i class="fa-solid fa-table-cells-large text-lg"></i>
+        <span>Categories</span>
+      </div>
+      <div onclick="navClick('Mall')" class="flex flex-col items-center text-[10px] hover:text-blackTheme cursor-pointer">
+        <i class="fa-solid fa-store text-lg"></i>
+        <span>Mall</span>
+      </div>
+      <div onclick="navClick('Video Finds')" class="flex flex-col items-center text-[10px] hover:text-blackTheme cursor-pointer">
+        <i class="fa-solid fa-circle-play text-lg"></i>
+        <span>Video Finds</span>
+      </div>
+      <div onclick="navClick('My Orders')" class="flex flex-col items-center text-[10px] hover:text-blackTheme cursor-pointer">
+        <i class="fa-solid fa-box text-lg"></i>
+        <span>My Orders</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= 3. LOGIN / PROFILE MODAL (3RD IMAGE EXACT DESIGN) ================= -->
+  <div id="login-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white w-full max-w-sm rounded-2xl p-6 relative shadow-2xl animate-fade-in border-t-4 border-brandOrange">
+      <button onclick="closeLoginModal()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="modal-content">
+        <!-- Content dynamic through JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Code -->
+  <script>
+    let currentUser = null;
+
+    // Categories List
+    const categories = [
+      { name: "All Categories", img: "https://picsum.photos/100?random=1" },
+      { name: "Kurtis & Suits", img: "https://picsum.photos/100?random=2" },
+      { name: "Kids", img: "https://picsum.photos/100?random=3" },
+      { name: "Home Decor", img: "https://picsum.photos/100?random=4" },
+      { name: "Beauty", img: "https://picsum.photos/100?random=5" },
+      { name: "Saree", img: "https://picsum.photos/100?random=6" },
+      { name: "Western Wear", img: "https://picsum.photos/100?random=7" },
+      { name: "Jewellery", img: "https://picsum.photos/100?random=8" },
+      { name: "Men Fashion", img: "https://picsum.photos/100?random=9" },
+      { name: "Footwear", img: "https://picsum.photos/100?random=10" }
+    ];
+
+    // Generating 50 Unique Products dynamically
+    const productNames = ["Charvi Voguish Saree", "Banita Ensemble Saree", "Designer Printed Kurti", "Trendy Top & Jeans", "Cotton Printed Dupatta", "Silk Ethnic Lehenga", "Men Formal Shirt", "Kids Wear Combo", "Casual Sneakers", "Silver Oxidized Earrings"];
+    
+    const products = Array.from({ length: 50 }, (_, i) => {
+      const basePrice = Math.floor(Math.random() * 600) + 200;
+      const discount = Math.floor(Math.random() * 20) + 10; // Discount %
+      const offerPrice = Math.floor(basePrice * (1 - discount / 100));
+
+      return {
+        id: i + 1,
+        name: `${productNames[i % productNames.length]} #${i + 1}`,
+        originalPrice: `₹${basePrice}`,
+        price: `₹${offerPrice}`,
+        discount: `${discount}% OFF`,
+        offer: `₹${offerPrice - 30} with 1 Special Offer`,
+        rating: (Math.random() * (4.9 - 3.8) + 3.8).toFixed(1),
+        reviews: Math.floor(Math.random() * 5000 + 200).toLocaleString(),
+        image: `https://picsum.photos/300/400?random=${i + 30}`,
+        isAd: i % 5 === 0
+      };
+    });
+
+    // Splash Screen Timer
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        const splash = document.getElementById("splash-screen");
+        const app = document.getElementById("app");
+        if(splash && app) {
+          splash.classList.add("opacity-0");
+          setTimeout(() => {
+            splash.style.display = "none";
+            app.classList.remove("hidden");
+          }, 700);
+        }
+      }, 2500);
+
+      renderCategories();
+      renderProducts(products);
+    });
+
+    // Render Categories
+    function renderCategories() {
+      const container = document.getElementById("category-container");
+      if(!container) return;
+      container.innerHTML = categories.map(cat => `
+        <div onclick="showMessage('Category: ${cat.name}')" class="flex flex-col items-center min-w-[65px] text-center cursor-pointer active:scale-95 transition">
+          <div class="w-14 h-14 rounded-full bg-gray-100 overflow-hidden border border-gray-200 p-0.5">
+            <img src="${cat.img}" alt="${cat.name}" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <span class="text-[11px] text-gray-700 font-medium mt-1 truncate w-16">${cat.name}</span>
+        </div>
+      `).join('');
+    }
+
+    // Render 50 Products
+    function renderProducts(items) {
+      const grid = document.getElementById("product-grid");
+      if(!grid) return;
+      if(items.length === 0) {
+        grid.innerHTML = `<p class="col-span-2 text-center text-gray-500 py-6">No product found!</p>`;
+        return;
+      }
+      grid.innerHTML = items.map(item => `
+        <div onclick="openProductDetails('${item.name}', '${item.price}')" class="bg-white rounded-md border overflow-hidden relative shadow-sm cursor-pointer hover:shadow-md transition">
+          <div class="relative">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover" />
+            <button onclick="event.stopPropagation(); toggleHeart(this)" class="absolute top-2 right-2 bg-white/80 p-1.5 rounded-full shadow hover:bg-white active:scale-90 transition">
+              <i class="fa-regular fa-heart text-gray-600 text-xs"></i>
+            </button>
+          </div>
+          <div class="p-2">
+            <span class="text-xs text-gray-600 font-medium block truncate">
+              ${item.isAd ? '<span class="bg-gray-200 text-gray-700 text-[9px] px-1 rounded mr-1 font-bold">Ad</span>' : ''}
+              ${item.name}
+            </span>
+            
+            <div class="flex items-center gap-1.5 mt-0.5">
+              <span class="text-base font-bold text-gray-900">${item.price}</span>
+              <span class="text-xs text-gray-400 line-through">${item.originalPrice}</span>
+              <span class="text-[10px] text-red-600 font-bold">${item.discount}</span>
+            </div>
+
+            <div class="text-[10px] text-meeshoGreen font-semibold bg-emerald-50 px-1 py-0.5 rounded w-max mt-1">
+              ${item.offer}
+            </div>
+
+            <div class="flex items-center mt-2 space-x-1">
+              <span class="bg-meeshoGreen text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                ${item.rating} <i class="fa-solid fa-star text-[8px]"></i>
+              </span>
+              <span class="text-[10px] text-gray-400">(${item.reviews})</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Product View Handler
+    function openProductDetails(name, price) {
+      alert(`📦 Product: ${name}\n💰 Price: ${price}\n\n⚠️ Notice: Yeh website sirf showcase ke liye hai. Yahan se payment / purchasing nahi ki ja sakti.`);
+    }
+
+    // Live Search Filter
+    function filterProducts() {
+      const query = document.getElementById("search-input").value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+      renderProducts(filtered);
+    }
+
+    // Heart Icon Toggle
+    function toggleHeart(btn) {
+      const icon = btn.querySelector('i');
+      if(icon.classList.contains('fa-regular')) {
+        icon.classList.remove('fa-regular', 'text-gray-600');
+        icon.classList.add('fa-solid', 'text-red-500');
+        showMessage('Saved to Wishlist!');
+      } else {
+        icon.classList.remove('fa-solid', 'text-red-500');
+        icon.classList.add('fa-regular', 'text-gray-600');
+        showMessage('Removed from Wishlist!');
+      }
+    }
+
+    // Login Modal Handler (3rd Photo Look)
+    function openLoginModal() {
+      const modal = document.getElementById("login-modal");
+      const content = document.getElementById("modal-content");
+
+      if(currentUser) {
+        content.innerHTML = `
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blackTheme text-white font-black text-2xl rounded-full flex items-center justify-center mx-auto mb-3 shadow">
+              ${currentUser.email.charAt(0).toUpperCase()}
+            </div>
+            <h2 class="text-xl font-bold text-gray-800">Welcome back</h2>
+            <p class="text-xs text-gray-500 mb-4">${currentUser.email}</p>
+            <div class="bg-gray-100 text-gray-800 text-xs font-medium p-2.5 rounded-lg mb-4">
+              Logged in to Deepak BHAI shop Account
+            </div>
+            <button onclick="logoutUser()" class="w-full bg-red-500 text-white font-semibold py-2.5 rounded-lg text-sm hover:bg-red-600 transition">
+              Log out
+            </button>
+          </div>
+        `;
+      } else {
+        content.innerHTML = `
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-slate-900">Welcome back</h2>
+            <p class="text-xs text-slate-500 mt-1">Enter your email and password to access your account</p>
+          </div>
+          <form onsubmit="handleLogin(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1">Email</label>
+              <input id="login-email" type="email" value="m.dhoni@example.com" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brandOrange text-gray-700" />
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="block text-xs font-bold text-slate-800">Password</label>
+                <a href="#" onclick="showMessage('Password reset link sent!')" class="text-xs font-semibold text-brandOrange hover:underline">Forgot password?</a>
+              </div>
+              <input id="login-password" type="password" placeholder="••••••••" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brandOrange" />
+            </div>
+            <button type="submit" class="w-full bg-brandOrange text-white font-bold py-3 rounded-lg text-sm hover:bg-brandOrangeHover transition shadow">
+              Login to your account
+            </button>
+          </form>
+          <div class="text-center mt-5 pt-4 border-t text-xs text-slate-500">
+            Don't have an account? <a href="#" onclick="showMessage('Sign up system ready')" class="text-brandOrange font-bold hover:underline">Sign up</a>
+          </div>
+        `;
+      }
+      modal.classList.remove("hidden");
+    }
+
+    function closeLoginModal() {
+      document.getElementById("login-modal").classList.add("hidden");
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      currentUser = { email };
+      closeLoginModal();
+      alert(`Successfully Logged In as ${email}`);
+    }
+
+    function logoutUser() {
+      currentUser = null;
+      closeLoginModal();
+      alert("You have been logged out!");
+    }
+
+    function showMessage(msg) { alert(msg); }
+    function navClick(section) { alert(`Navigating to ${section}...`); }
+  </script>
+</body>
+</html>
