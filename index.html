@@ -1,212 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deepak Bhai Shop</title>
-
 <link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 </head>
-
 <body>
 
-<header class="header">
-
-<div class="top-bar">
-
-<button class="menu-btn">
-<i class="fas fa-bars"></i>
-</button>
-
-<div class="logo">
-<h2>🛍 Deepak Bhai Shop</h2>
-</div>
-
-<div class="top-icons">
-
-<i class="far fa-heart"></i>
-
-<i class="fas fa-shopping-cart"></i>
-
-</div>
-
-</div>
-
-<div class="search-box">
-
-<div class="search">
-
-<i class="fas fa-search"></i>
-
-<input
-type="text"
-placeholder="Search for Products">
-
-<i class="fas fa-microphone"></i>
-
-<i class="fas fa-camera"></i>
-
-</div>
-
-</div>
-
+<header>
+  <input class="search" type="text" placeholder="Search by Keyword or Product ID">
 </header>
 
-<section class="refer-box">
+<div class="categories">
+  <div class="cat"><img src="https://via.placeholder.com/60"><p>Saree</p></div>
+  <div class="cat"><img src="https://via.placeholder.com/60"><p>Kurtis</p></div>
+  <div class="cat"><img src="https://via.placeholder.com/60"><p>Men</p></div>
+  <div class="cat"><img src="https://via.placeholder.com/60"><p>Home</p></div>
+  <div class="cat"><img src="https://via.placeholder.com/60"><p>Beauty</p></div>
+</div>
 
-<div class="refer">
+<div class="products">
 
-🎁 Refer & Earn ₹100
+  <div class="card">
+    <img src="TERI-SAREE-1-KA-LINK">
+    <p>Charvi Voguish Saree</p>
+    <p class="price">₹451</p>
+    <p class="offer">₹421 with 1 Special Offer</p>
+    <button onclick="alert('Bhai ye sirf Gallery hai 😄')" style="width:100%; background:#ff5722; color:white; border:none; padding:8px; border-radius:5px;">View</button>
+  </div>
+
+  <div class="card">
+    <img src="TERI-SAREE-2-KA-LINK">
+    <p>Banita Ensemble Saree</p>
+    <p class="price">₹546</p>
+    <p class="offer">₹485 with Offer</p>
+    <button onclick="alert('Bhai ye sirf Gallery hai 😄')" style="width:100%; background:#ff5722; color:white; border:none; padding:8px; border-radius:5px;">View</button>
+  </div>
 
 </div>
 
-</section>
-
-<section class="banner-slider">
-
-<div class="slider">
-
-<img src="https://picsum.photos/900/350?1">
-
-<img src="https://picsum.photos/900/350?2">
-
-<img src="https://picsum.photos/900/350?3">
-
+<div class="bottom">
+  <div>🏠<br>Home</div>
+  <div>👕<br>Categories</div>
+  <div>⭐<br>Mall</div>
+  <div>📹<br>Video</div>
+  <div>📦<br>Orders</div>
 </div>
-
-</section>
-
-<section class="categories">
-
-<div class="category">
-
-<div class="cat-icon">👗</div>
-
-<p>Fashion</p>
-
-</div>
-
-<div class="category">
-
-<div class="cat-icon">💄</div>
-
-<p>Beauty</p>
-
-</div>
-
-<div class="category">
-
-<div class="cat-icon">🏠</div>
-
-<p>Home</p>
-
-</div>
-
-<div class="category">
-
-<div class="cat-icon">🍳</div>
-
-<p>Kitchen</p>
-
-</div>
-
-<div class="category">
-
-<div class="cat-icon">👶</div>
-
-<p>Kids</p>
-
-</div>
-
-</section>
-
-<section class="title">
-
-<h3>Trending Products</h3>
-
-</section>
-
-<section class="products" id="products">
-
-</section>
-<!-- Order Confirmation Popup -->
-<div class="order-popup" id="orderPopup">
-
-    <div class="popup-box">
-
-        <div class="popup-icon">✅</div>
-
-        <h2>Order Confirmed</h2>
-
-        <p>
-            Thank you for visiting <b>Deepak Bhai Shop</b>.<br>
-            This is a demo website only.<br>
-            No real order has been placed.
-        </p>
-
-        <button id="closePopup">
-            OK
-        </button>
-
-    </div>
-
-</div>
-
-<!-- Bottom Navigation -->
-
-<nav class="bottom-nav">
-
-    <a href="index.html" class="active">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-    </a>
-
-    <a href="category.html">
-        <i class="fas fa-th-large"></i>
-        <span>Categories</span>
-    </a>
-
-    <a href="wishlist.html">
-        <i class="far fa-heart"></i>
-        <span>Wishlist</span>
-    </a>
-
-    <a href="cart.html">
-        <i class="fas fa-shopping-cart"></i>
-        <span>Cart</span>
-    </a>
-
-    <a href="profile.html">
-        <i class="far fa-user"></i>
-        <span>Profile</span>
-    </a>
-
-</nav>
-
-<script src="products.js"></script>
-<script src="script.js"></script>
 
 </body>
 </html>
-
-
-<div class="buttons">
-
-<button class="cart-btn">
-🛒 Cart
-</button>
-
-<button class="order-btn">
-Order Now
-</button>
-
-</div>
-
-</div>
