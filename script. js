@@ -1,3 +1,3 @@
 function signIn() {
-  alert("Please Sign In to Continue 🔒\n\nBhai ye sirf demo site hai. Order nahi hoga");
+  alert("Please Sign In to Continue 🔒\n");
 }
