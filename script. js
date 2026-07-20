@@ -1,3 +1,0 @@
-function signIn() {
-  alert("Please Sign In to Continue 🔒\n");
-}
