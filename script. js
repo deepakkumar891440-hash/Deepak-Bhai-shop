@@ -9,9 +9,9 @@ document.querySelector(".menu").onclick = function(){
 }
 
 
-// Cart Button
+// CartButtond
 document.querySelector(".cart").onclick = function(){
-    alert("🛒 Your Cart is Empty\n\nAdd products to cart first");
+    showCart();
 }
 
 
