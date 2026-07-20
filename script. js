@@ -1,0 +1,3 @@
+function order() {
+    alert("✅ Order Confirmed!\n\nThank you for shopping at Deepak Bhai Shop");
+}
