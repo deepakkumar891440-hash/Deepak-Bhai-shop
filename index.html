@@ -11,7 +11,7 @@
 
     <!-- Header Section -->
     <header class="top-header">
-        <div class="user-info">
+        <div class="user-info" onclick="openModal('signupModal')">
             <i class="fa-solid fa-circle-user avatar"></i>
             <div>
                 <span class="welcome-text">Welcome back,</span>
@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="header-icons">
-            <i class="fa-regular fa-bell"></i>
-            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-bell" onclick="alert('No new notifications!')"></i>
+            <i class="fa-regular fa-heart" onclick="alert('Wishlist is empty!')"></i>
             <div class="cart-icon-wrap" onclick="toggleCart()">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span id="cartCount" class="badge">0</span>
@@ -32,40 +32,40 @@
     <div class="search-container">
         <div class="search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchInput" placeholder="Search in Deepak Bhai Shop..." onkeyup="searchProducts()">
-            <i class="fa-solid fa-microphone mic-icon"></i>
-            <i class="fa-solid fa-camera camera-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search in Deepak Bhai Shop..." oninput="searchProducts()">
+            <i class="fa-solid fa-microphone mic-icon" onclick="alert('Voice search activated!')"></i>
+            <i class="fa-solid fa-camera camera-icon" onclick="alert('Image search activated!')"></i>
         </div>
     </div>
 
-    <!-- Categories Scroll Horizontal -->
+    <!-- Categories Scroll -->
     <div class="categories-scroll">
-        <div class="cat-item"><div class="cat-circle"><i class="fa-solid fa-border-all"></i></div><span>All Categories</span></div>
-        <div class="cat-item"><div class="cat-circle"><i class="fa-solid fa-shirt"></i></div><span>Kurtis & Sets</span></div>
-        <div class="cat-item"><div class="cat-circle"><i class="fa-solid fa-child"></i></div><span>Kids</span></div>
-        <div class="cat-item"><div class="cat-circle"><i class="fa-solid fa-couch"></i></div><span>Home</span></div>
-        <div class="cat-item"><div class="cat-circle"><i class="fa-solid fa-wand-magic-sparkles"></i></div><span>Beauty</span></div>
-        <div class="cat-item"><div class="cat-circle"><i class="fa-solid fa-gem"></i></div><span>Jewellery</span></div>
+        <div class="cat-item" onclick="filterByCategory('All')"><div class="cat-circle"><i class="fa-solid fa-border-all"></i></div><span>All</span></div>
+        <div class="cat-item" onclick="filterByCategory('Saree')"><div class="cat-circle"><i class="fa-solid fa-shirt"></i></div><span>Saree</span></div>
+        <div class="cat-item" onclick="filterByCategory('Kurtis')"><div class="cat-circle"><i class="fa-solid fa-vest"></i></div><span>Kurtis</span></div>
+        <div class="cat-item" onclick="filterByCategory('Kids')"><div class="cat-circle"><i class="fa-solid fa-child"></i></div><span>Kids</span></div>
+        <div class="cat-item" onclick="filterByCategory('Electronics')"><div class="cat-circle"><i class="fa-solid fa-headphones"></i></div><span>Electronics</span></div>
+        <div class="cat-item" onclick="filterByCategory('Jewellery')"><div class="cat-circle"><i class="fa-solid fa-gem"></i></div><span>Jewellery</span></div>
+        <div class="cat-item" onclick="filterByCategory('Shoes')"><div class="cat-circle"><i class="fa-solid fa-shoe-prints"></i></div><span>Shoes</span></div>
     </div>
 
     <!-- Filter Bar -->
     <div class="filter-bar">
-        <button><i class="fa-solid fa-arrow-up-wide-short"></i> Sort</button>
-        <button>Category <i class="fa-solid fa-angle-down"></i></button>
-        <button>Gender <i class="fa-solid fa-angle-down"></i></button>
-        <button><i class="fa-solid fa-sliders"></i> Filters</button>
+        <button onclick="sortProducts('low-high')"><i class="fa-solid fa-arrow-up-wide-short"></i> Price Low</button>
+        <button onclick="sortProducts('high-low')"><i class="fa-solid fa-arrow-down-wide-short"></i> Price High</button>
+        <button onclick="alert('Filter menu opened!')"><i class="fa-solid fa-sliders"></i> Filters</button>
     </div>
 
     <!-- Product Grid -->
     <main class="products-grid" id="productsContainer">
-        <!-- Products Script se load honge -->
+        <!-- 100 Products Load Honge -->
     </main>
 
-    <!-- Bottom Navigation Bar (Meesho Style) -->
+    <!-- Bottom Navigation Bar -->
     <nav class="bottom-nav">
-        <div class="nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></div>
-        <div class="nav-item"><i class="fa-solid fa-list"></i><span>Categories</span></div>
-        <div class="nav-item"><i class="fa-solid fa-store"></i><span>Mall</span></div>
+        <div class="nav-item active" onclick="filterByCategory('All')"><i class="fa-solid fa-house"></i><span>Home</span></div>
+        <div class="nav-item" onclick="alert('Category View Opened')"><i class="fa-solid fa-list"></i><span>Categories</span></div>
+        <div class="nav-item" onclick="alert('Deepak Mall Opened')"><i class="fa-solid fa-store"></i><span>Mall</span></div>
         <div class="nav-item" onclick="openModal('signupModal')"><i class="fa-solid fa-user"></i><span id="navUserText">Profile</span></div>
     </nav>
 
@@ -75,8 +75,8 @@
             <span class="close" onclick="toggleCart()">&times;</span>
             <h2>My Cart</h2>
             <div id="cartItems"></div>
-            <hr>
-            <h3>Total Amount: ₹<span id="cartTotal">0</span></h3>
+            <hr><br>
+            <h3>Total: ₹<span id="cartTotal">0</span></h3>
             <button class="btn-checkout" onclick="checkout()">Place Order</button>
         </div>
     </div>
@@ -86,8 +86,9 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('signupModal')">&times;</span>
             <h2>Sign Up / Login</h2>
-            <input type="text" id="userName" placeholder="Enter Full Name"><br><br>
-            <input type="text" id="userMobile" placeholder="Enter Phone Number"><br><br>
+            <br>
+            <input type="text" id="userName" placeholder="Enter Full Name" style="width:100%; padding:8px;"><br><br>
+            <input type="text" id="userMobile" placeholder="Enter Phone Number" style="width:100%; padding:8px;"><br><br>
             <button class="btn-checkout" onclick="saveUser()">Continue</button>
         </div>
     </div>
