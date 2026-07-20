@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Deepak Bhai Shop</title>
-    <link rel="stylesheet" href="style.css">
+<title>Deepak Bhai Shop</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
 <header>
-    <h1>🛒 Deepak Bhai Shop</h1>
+    <div class="top">
+        <button class="menu">☰</button>
+        <h2>🛒 Deepak Bhai Shop</h2>
+        <button class="cart">🛍️</button>
+    </div>
+
     <input type="text" placeholder="Search products...">
 </header>
+
 
 <div class="categories">
     <button>Fashion</button>
@@ -19,23 +26,44 @@
     <button>Beauty</button>
 </div>
 
+
+<h2 class="title">Products</h2>
+
 <div class="products">
 
-    <div class="card">
-        <img src="https://via.placeholder.com/200" alt="Product">
-        <h3>Stylish Shirt</h3>
-        <p>₹499</p>
-        <button onclick="order()">Order Now</button>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400">
+<h3>Stylish Shirt</h3>
+<p>₹499</p>
+<button onclick="order()">Order Now</button>
+</div>
 
-    <div class="card">
-        <img src="https://i.imgur.com/TERA-LINK-YAHA.jpg" alt="Stylish Shirt" style="width:200px; height:200px;">
-        <h3>Smart Watch</h3>
-        <p>₹999</p>
-        <button onclick="order()">Order Now</button>
-    </div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400">
+<h3>Smart Watch</h3>
+<p>₹999</p>
+<button onclick="order()">Order Now</button>
+</div>
+
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400">
+<h3>Running Shoes</h3>
+<p>₹799</p>
+<button onclick="order()">Order Now</button>
+</div>
+
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400">
+<h3>Beauty Product</h3>
+<p>₹399</p>
+<button onclick="order()">Order Now</button>
+</div>
 
 </div>
+
 
 <script src="script.js"></script>
 
