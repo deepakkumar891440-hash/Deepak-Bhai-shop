@@ -1,158 +1,183 @@
-const photos = [
-    "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500",
-    "https://images.unsplash.com/photo-1583391733975-ac821034c4f0?w=500",
-    "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=500",
-    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
-    "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500",
-    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
-    "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500"
+let currentUser = null;
+
+const categories = [
+  { name: "All Categories", img: "https://picsum.photos/100?random=1" },
+  { name: "Kurtis & Suits", img: "https://picsum.photos/100?random=2" },
+  { name: "Kids", img: "https://picsum.photos/100?random=3" },
+  { name: "Home", img: "https://picsum.photos/100?random=4" },
+  { name: "Beauty", img: "https://picsum.photos/100?random=5" },
+  { name: "Saree", img: "https://picsum.photos/100?random=6" },
+  { name: "Western Wear", img: "https://picsum.photos/100?random=7" },
+  { name: "Jewellery", img: "https://picsum.photos/100?random=8" }
 ];
 
-function generate100Products() {
-    const categories = ["Saree", "Kurtis", "Kids", "Electronics", "Jewellery", "Shoes", "Makeup"];
-    let items = [];
-    for (let i = 1; i <= 100; i++) {
-        let index = (i - 1) % categories.length;
-        items.push({
-            id: i,
-            name: `${categories[index]} Item #${i}`,
-            category: categories[index],
-            price: Math.floor(Math.random() * 800) + 199,
-            rating: (Math.random() * (4.8 - 3.8) + 3.8).toFixed(1) + " ★",
-            image: photos[index]
-        });
-    }
-    return items;
-}
+const products = [
+  { id: 1, name: "Charvi Voguish Sarees", price: "₹451", offer: "₹421 with 1 Special Offer", rating: "4.2", reviews: "5,991", image: "https://picsum.photos/300/400?random=21", isAd: false },
+  { id: 2, name: "Banita Ensemble Sarees", price: "₹546", offer: "₹485 with 1 Special Offer", rating: "4.4", reviews: "1,200", image: "https://picsum.photos/300/400?random=22", isAd: true },
+  { id: 3, name: "Designer Printed Suit", price: "₹699", offer: "₹649 with Offer", rating: "4.5", reviews: "3,410", image: "https://picsum.photos/300/400?random=23", isAd: false },
+  { id: 4, name: "Trendy Top & Jeans", price: "₹299", offer: "₹250 with Offer", rating: "4.1", reviews: "890", image: "https://picsum.photos/300/400?random=24", isAd: false }
+];
 
-const products = generate100Products();
-let cart = [];
-let isLoggedIn = false;
+// Splash Screen Timer (2.5 Seconds)
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const splash = document.getElementById("splash-screen");
+    const app = document.getElementById("app");
+    splash.classList.add("opacity-0");
+    setTimeout(() => {
+      splash.style.display = "none";
+      app.classList.remove("hidden");
+    }, 700);
+  }, 2500);
 
-function renderProducts(items) {
-    const container = document.getElementById("productsContainer");
-    if (!container) return;
-    container.innerHTML = "";
-
-    if (items.length === 0) {
-        container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; padding: 30px; color: #888;">Koi product nahi mila!</p>`;
-        return;
-    }
-
-    items.forEach(product => {
-        container.innerHTML += `
-            <div class="product-card">
-                <img src="${product.image}" alt="${product.name}">
-                <div class="p-info">
-                    <div class="p-title">${product.name}</div>
-                    <div class="p-price">₹${product.price}</div>
-                    <span class="rating">${product.rating}</span>
-                    <div class="card-btns">
-                        <button class="btn-cart-sm" onclick="addToCart(${product.id})">Add</button>
-                        <button class="btn-buy-sm" onclick="buyNow(${product.id})">Buy</button>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-}
-
-function searchProducts() {
-    const query = document.getElementById("searchInput").value.toLowerCase().trim();
-    const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
-    renderProducts(filtered);
-}
-
-function filterByCategory(cat) {
-    if (cat === 'All') renderProducts(products);
-    else renderProducts(products.filter(p => p.category.toLowerCase() === cat.toLowerCase()));
-}
-
-function sortProducts(type) {
-    let sorted = [...products];
-    if (type === 'low-high') sorted.sort((a, b) => a.price - b.price);
-    else if (type === 'high-low') sorted.sort((a, b) => b.price - a.price);
-    renderProducts(sorted);
-}
-
-function addToCart(id) {
-    if (!isLoggedIn) {
-        openModal("signupModal");
-        return;
-    }
-    const item = products.find(p => p.id === id);
-    cart.push(item);
-    updateCartUI();
-    alert(`${item.name} Cart me add ho gaya!`);
-}
-
-function updateCartUI() {
-    const cartCount = document.getElementById("cartCount");
-    if (cartCount) cartCount.innerText = cart.length;
-
-    const cartItems = document.getElementById("cartItems");
-    if (!cartItems) return;
-
-    cartItems.innerHTML = "";
-    let total = 0;
-    cart.forEach(item => {
-        total += item.price;
-        cartItems.innerHTML += `<p style="margin:8px 0; font-size:13px;">${item.name} - <b>₹${item.price}</b></p>`;
-    });
-
-    const cartTotal = document.getElementById("cartTotal");
-    if (cartTotal) cartTotal.innerText = total;
-}
-
-function toggleCart() {
-    const modal = document.getElementById("cartModal");
-    if (modal) modal.style.display = modal.style.display === "flex" ? "none" : "flex";
-}
-
-function openModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.style.display = "flex";
-}
-
-function closeModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.style.display = "none";
-}
-
-function saveUser() {
-    const email = document.getElementById("userEmail").value;
-    const pass = document.getElementById("userPassword").value;
-
-    if (email && pass) {
-        isLoggedIn = true;
-        document.getElementById("navUserText").innerText = email.split('@')[0];
-        closeModal("signupModal");
-        alert("🎉 Successfully Logged In!");
-    } else {
-        alert("Kripya Email aur Password dono bharein!");
-    }
-}
-
-function buyNow(id) {
-    if (!isLoggedIn) {
-        openModal("signupModal");
-        return;
-    }
-    addToCart(id);
-    checkout();
-}
-
-function checkout() {
-    if (cart.length === 0) {
-        alert("Aapka Cart khali hai!");
-        return;
-    }
-    alert("🎉 Order Confirmed! Deepak Bhai Shop se khareedne ke liye shukriya.");
-    cart = [];
-    updateCartUI();
-    closeModal("cartModal");
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    renderProducts(products);
+  renderCategories();
+  renderProducts(products);
 });
+
+// Render Categories
+function renderCategories() {
+  const container = document.getElementById("category-container");
+  container.innerHTML = categories.map(cat => `
+    <div onclick="showMessage('Category: ${cat.name}')" class="flex flex-col items-center min-w-[65px] text-center cursor-pointer active:scale-95 transition">
+      <div class="w-14 h-14 rounded-full bg-pink-100 overflow-hidden border border-pink-200 p-0.5">
+        <img src="${cat.img}" alt="${cat.name}" class="w-full h-full object-cover rounded-full" />
+      </div>
+      <span class="text-[11px] text-gray-700 font-medium mt-1 truncate w-16">${cat.name}</span>
+    </div>
+  `).join('');
+}
+
+// Render Products
+function renderProducts(items) {
+  const grid = document.getElementById("product-grid");
+  if(items.length === 0) {
+    grid.innerHTML = `<p class="col-span-2 text-center text-gray-500 py-6">Koi product nahi mila!</p>`;
+    return;
+  }
+  grid.innerHTML = items.map(item => `
+    <div onclick="openProductDetails('${item.name}', '${item.price}')" class="bg-white rounded-md border overflow-hidden relative shadow-sm cursor-pointer hover:shadow-md transition">
+      <div class="relative">
+        <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover" />
+        <button onclick="event.stopPropagation(); toggleHeart(this)" class="absolute top-2 right-2 bg-white/80 p-1.5 rounded-full shadow hover:bg-white active:scale-90 transition">
+          <i class="fa-regular fa-heart text-gray-600 text-xs"></i>
+        </button>
+      </div>
+      <div class="p-2">
+        <span class="text-xs text-gray-600 font-medium block truncate">
+          ${item.isAd ? '<span class="bg-gray-200 text-gray-700 text-[9px] px-1 rounded mr-1 font-bold">Ad</span>' : ''}
+          ${item.name}
+        </span>
+        <div class="text-base font-bold text-gray-900 mt-0.5">${item.price}</div>
+        <div class="text-[10px] text-meeshoGreen font-semibold bg-emerald-50 px-1 py-0.5 rounded w-max mt-1">
+          ${item.offer}
+        </div>
+        <div class="flex items-center mt-2 space-x-1">
+          <span class="bg-meeshoGreen text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+            ${item.rating} <i class="fa-solid fa-star text-[8px]"></i>
+          </span>
+          <span class="text-[10px] text-gray-400">(${item.reviews})</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Product Details Notice
+function openProductDetails(name, price) {
+  alert(`📦 Product: ${name}\n💰 Price: ${price}\n\n⚠️ Notice: Yeh website sirf showcase ke liye hai. Yahan se khareeda nahi ja sakta.`);
+}
+
+// Search Filter
+function filterProducts() {
+  const query = document.getElementById("search-input").value.toLowerCase();
+  const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+  renderProducts(filtered);
+}
+
+// Wishlist Heart Toggle
+function toggleHeart(btn) {
+  const icon = btn.querySelector('i');
+  if(icon.classList.contains('fa-regular')) {
+    icon.classList.remove('fa-regular', 'text-gray-600');
+    icon.classList.add('fa-solid', 'text-meesho');
+    showMessage('Saved to Wishlist!');
+  } else {
+    icon.classList.remove('fa-solid', 'text-meesho');
+    icon.classList.add('fa-regular', 'text-gray-600');
+    showMessage('Removed from Wishlist!');
+  }
+}
+
+// User Profile / Login Modal
+function openLoginModal() {
+  const modal = document.getElementById("login-modal");
+  const content = document.getElementById("modal-content");
+
+  if(currentUser) {
+    content.innerHTML = `
+      <div class="text-center">
+        <div class="w-16 h-16 bg-meesho text-white font-extrabold text-2xl rounded-full flex items-center justify-center mx-auto mb-3 shadow">
+          ${currentUser.name.charAt(0).toUpperCase()}
+        </div>
+        <h2 class="text-lg font-bold text-gray-800">Hello, ${currentUser.name}!</h2>
+        <p class="text-xs text-gray-500 mb-4">${currentUser.phone}</p>
+        <div class="bg-pink-50 text-meesho text-xs font-semibold p-2 rounded-lg mb-4">
+          Deepak BHAI shop Member
+        </div>
+        <button onclick="logoutUser()" class="w-full bg-red-500 text-white font-semibold py-2 rounded-lg text-sm hover:bg-red-600 transition">
+          Logout
+        </button>
+      </div>
+    `;
+  } else {
+    content.innerHTML = `
+      <div class="text-center mb-4">
+        <h2 class="text-xl font-bold text-meesho">Deepak BHAI shop</h2>
+        <p class="text-xs text-gray-500 mt-1">Sign Up / Login to Profile</p>
+      </div>
+      <form onsubmit="handleLogin(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Your Name</label>
+          <input id="login-name" type="text" placeholder="Enter name" required class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-meesho" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Mobile Number</label>
+          <input id="login-phone" type="tel" placeholder="10-digit number" required pattern="[0-9]{10}" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-meesho" />
+        </div>
+        <button type="submit" class="w-full bg-meesho text-white font-bold py-2 rounded-lg text-sm hover:bg-meeshoDark transition">
+          Login / Continue
+        </button>
+      </form>
+    `;
+  }
+
+  modal.classList.remove("hidden");
+}
+
+function closeLoginModal() {
+  document.getElementById("login-modal").classList.add("hidden");
+}
+
+function handleLogin(e) {
+  e.preventDefault();
+  const name = document.getElementById("login-name").value;
+  const phone = document.getElementById("login-phone").value;
+
+  currentUser = { name, phone };
+  closeLoginModal();
+  alert(`Welcome ${name}! Aapka Deepak BHAI shop me login ho gaya hai.`);
+}
+
+function logoutUser() {
+  currentUser = null;
+  closeLoginModal();
+  alert("Logout successful!");
+}
+
+function showMessage(msg) {
+  alert(msg);
+}
+
+function navClick(section) {
+  alert(`Navigating to ${section}...`);
+}
