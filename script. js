@@ -38,3 +38,29 @@ search.addEventListener("keyup", function(){
     });
 
 });
+let cart = [];
+
+function addToCart(name, price) {
+    cart.push({
+        product: name,
+        amount: price
+    });
+
+    alert("🛒 " + name + " Cart me add ho gaya!");
+}
+
+function showCart() {
+
+    if(cart.length === 0){
+        alert("🛒 Cart abhi empty hai");
+        return;
+    }
+
+    let list = "Your Cart:\n\n";
+
+    cart.forEach((item, index)=>{
+        list += (index+1) + ". " + item.product + " - " + item.amount + "\n";
+    });
+
+    alert(list);
+}
