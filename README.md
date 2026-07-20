@@ -23,14 +23,4 @@
 <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400">
 <p class="title">Banarasi Silk Saree</p>
 <p class="price">₹899 <span class="old">₹1999</span> <span class="discount">55% OFF</span></p>
-<button class="btn" onclick="window.open('https://wa.me/91XXXXXXXXXX')">Order on WhatsApp</button>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400">
-<p class="title">Anarkali Kurti Set</p>
-<p class="price">₹699 <span class="old">₹1499</span> <span class="discount">53% OFF</span></p>
-<button class="btn" onclick="window.open('https://wa.me/91XXXXXXXXXX')">Order on WhatsApp</button>
-</div>
-</div>
-</body>
-</html>
+<button class="btn" on
