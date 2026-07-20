@@ -3,13 +3,40 @@
 <head>
 <title>Deepak Bhai Shop</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<style>
+body {margin:0; font-family:Arial; background:#f8f8f8; padding-bottom:70px;}
+.topbar {display:flex; justify-content:space-between; padding:10px; background:white; align-items:center; box-shadow:0 1px 3px rgba(0,0,0,0.1);}
+.profile {border-radius:50%; width:35px; height:35px;}
+.refer {background:#f3e5f5; color:#8e24aa; padding:5px 10px; border-radius:20px; font-size:12px; margin-left:5px; font-weight:bold;}
+.right span {font-size:22px; margin-left:15px; position:relative; cursor:pointer;}
+.right sup {background:purple; color:white; border-radius:50%; padding:1px 5px; font-size:10px; position:absolute; top:-5px; right:-8px;}
+.searchbar {background:white; margin:10px; padding:10px; border-radius:10px; border:1px solid #ddd; display:flex; align-items:center;}
+.searchbar input {border:none; outline:none; width:100%; margin:0 5px;}
+.cat-row {display:flex; justify-content:space-around; background:white; padding:10px 0; overflow-x:auto;}
+.cat-row img {border-radius:50%; width:60px; height:60px; object-fit:cover;}
+.cat-row p {font-size:11px; text-align:center; width:60px; margin:5px 0 0 0;}
+.filterbar {display:flex; justify-content:space-around; background:white; padding:12px 0; border-top:1px solid #eee; border-bottom:1px solid #eee; font-size:14px;}
+.products {display:grid; grid-template-columns:1fr 1fr; gap:5px; padding:5px;}
+.card {background:white; padding:8px; position:relative; border-radius:5px;}
+.card img {width:100%; border-radius:5px; height:250px; object-fit:cover;}
+.heart {position:absolute; top:15px; right:15px; background:white; border-radius:50%; padding:5px 8px; cursor:pointer;}
+.name {font-size:13px; margin:5px 0; color:#555;}
+.price {font-weight:bold; font-size:16px; margin:0;}
+.offer {color:green; font-size:12px; margin:3px 0;}
+.rating {background:green; color:white; display:inline-block; padding:2px 6px; border-radius:10px; font-size:11px;}
+.ad {background:#eee; color:gray; font-size:10px; padding:1px 4px; display:inline; margin-right:5px;}
+.refer-popup {position:fixed; bottom:80px; right:10px; width:200px; background:white; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2);}
+.refer-popup span {position:absolute; top:5px; right:8px; cursor:pointer;}
+.bottom {position:fixed; bottom:0; width:100%; background:white; display:flex; justify-content:space-around; padding:5px 0; border-top:1px solid #ddd; font-size:10px; text-align:center;}
+.bottom .active {color:#8e24aa;}
+.bottom div {cursor:pointer;}
+</style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="left">
-    <img src="https://via.placeholder.com/35" class="profile">
+  <div class="left" style="display:flex; align-items:center;">
+    <img src="https://i.imgur.com/8Km9tLL.png" class="profile">
     <div class="refer" onclick="signIn()">🎁 Refer and Earn</div>
   </div>
   <div class="right">
@@ -24,19 +51,19 @@
 </div>
 
 <div class="cat-row">
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/ADD8E6/000?text=🌿"><p>All Categ...</p></div>
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFE4E1/000?text=👗"><p>Kurtis & D...</p></div>
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFFACD/000?text=👶"><p>Kids</p></div>
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFDAB9/000?text=🏠"><p>Home</p></div>
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/F0E68C/000?text=💄"><p>Beauty</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/MK3eW3A.png"><p>All Categ...</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/XYZ123.png"><p>Kurtis & D...</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/ABC456.png"><p>Kids</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/DEF789.png"><p>Home</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/GHI012.png"><p>Beauty</p></div>
 </div>
 
 <div class="cat-row">
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/D3D3D3/000?text=🍳"><p>Kitchen U...</p></div>
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFC0CB/000?text=🥻"><p>Saree</p></div>
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFA07A/000?text=👚"><p>Western ...</p></div>
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/DAA520/000?text=💍"><p>Jewellery</p></div>
-  <div onclick="signIn()"><img src="https://via.placeholder.com/60/87CEEB/000?text=👔"><p>Men Fashi...</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/JKL345.png"><p>Kitchen U...</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/MNO678.png"><p>Saree</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/PQR901.png"><p>Western ...</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/STU234.png"><p>Jewellery</p></div>
+  <div onclick="signIn()"><img src="https://i.imgur.com/VWX567.png"><p>Men Fashi...</p></div>
 </div>
 
 <div class="filterbar">
@@ -48,7 +75,7 @@
 
 <div class="products">
   <div class="card">
-    <img src="https://via.placeholder.com/200x250/FFD700/000?text=Saree1">
+    <img src="https://i.imgur.com/TeriSaree1.jpg">
     <span class="heart" onclick="signIn()">♡</span>
     <p class="name">Charvi Voguish Sarees</p>
     <p class="price">₹451</p>
@@ -57,18 +84,13 @@
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/200x250/FF1493/fff?text=Saree2">
+    <img src="https://i.imgur.com/TeriSaree2.jpg">
     <span class="heart" onclick="signIn()">♡</span>
-    <p class="ad">Ad</p> <p class="name">Banita Ensemble Sarees</p>
+    <p><span class="ad">Ad</span> <span class="name">Banita Ensemble Sarees</span></p>
     <p class="price">₹546</p>
     <p class="offer">₹485 with Offer</p>
     <p class="rating">🟢 4.4 ★ (2,100)</p>
   </div>
-</div>
-
-<div class="refer-popup">
-  <span onclick="this.parentElement.style.display='none'">X</span>
-  <img src="https://via.placeholder.com/300x200/FFD700/000?text=REFER+&+EARN+₹100">
 </div>
 
 <div class="bottom">
@@ -79,6 +101,10 @@
   <div onclick="signIn()"><p>📦</p><p>My Orders</p></div>
 </div>
 
-<script src="script.js"></script>
+<script>
+function signIn() {
+  alert("Please Sign In to Continue 🔒\nBhai ye sirf demo site hai");
+}
+</script>
 </body>
 </html>
