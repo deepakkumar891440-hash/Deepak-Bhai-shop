@@ -39,7 +39,7 @@
 </head>
 <body class="bg-gray-100 font-sans">
 
-  <!-- ================= 1. SPLASH SCREEN (1ST IMAGE STYLE) ================= -->
+  <!-- ================= 1. SPLASH SCREEN ================= -->
   <div id="splash-screen" class="fixed inset-0 bg-[#4A0033] z-50 flex flex-col items-center justify-center text-white transition-opacity duration-700">
     <div class="w-28 h-28 bg-transparent text-[#FF9800] rounded-3xl flex items-center justify-center text-8xl font-black mb-4 animate-bounce">
       db
@@ -48,7 +48,7 @@
     <p class="text-sm font-medium text-pink-200 animate-pulse">Welcome to Deepak BHAI shop</p>
   </div>
 
-  <!-- ================= 2. MAIN APP SCREEN (2ND IMAGE STYLE + BLACK THEME) ================= -->
+  <!-- ================= 2. MAIN APP SCREEN ================= -->
   <div id="app" class="max-w-md mx-auto bg-white min-h-screen pb-20 border shadow-2xl relative hidden">
 
     <!-- Header Bar -->
@@ -126,7 +126,7 @@
 
   </div>
 
-  <!-- ================= 3. LOGIN / PROFILE MODAL (3RD IMAGE EXACT DESIGN) ================= -->
+  <!-- ================= 3. LOGIN / PROFILE MODAL ================= -->
   <div id="login-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white w-full max-w-sm rounded-2xl p-6 relative shadow-2xl animate-fade-in border-t-4 border-brandOrange">
       <button onclick="closeLoginModal()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-lg">
@@ -143,26 +143,40 @@
   <script>
     let currentUser = null;
 
-    // Categories List
+    // Categories List (Fix Images)
     const categories = [
-      { name: "All Categories", img: "https://picsum.photos/100?random=1" },
-      { name: "Kurtis & Suits", img: "https://picsum.photos/100?random=2" },
-      { name: "Kids", img: "https://picsum.photos/100?random=3" },
-      { name: "Home Decor", img: "https://picsum.photos/100?random=4" },
-      { name: "Beauty", img: "https://picsum.photos/100?random=5" },
-      { name: "Saree", img: "https://picsum.photos/100?random=6" },
-      { name: "Western Wear", img: "https://picsum.photos/100?random=7" },
-      { name: "Jewellery", img: "https://picsum.photos/100?random=8" },
-      { name: "Men Fashion", img: "https://picsum.photos/100?random=9" },
-      { name: "Footwear", img: "https://picsum.photos/100?random=10" }
+      { name: "All Categories", img: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=150" },
+      { name: "Kurtis & Suits", img: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=150" },
+      { name: "Kids", img: "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=150" },
+      { name: "Home Decor", img: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=150" },
+      { name: "Beauty", img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=150" },
+      { name: "Saree", img: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=150" },
+      { name: "Western Wear", img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=150" },
+      { name: "Jewellery", img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=150" },
+      { name: "Men Fashion", img: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=150" },
+      { name: "Footwear", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=150" }
     ];
 
-    // Generating 50 Unique Products dynamically
+    // Product Images Mapping
+    const sampleImages = [
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400", // Saree
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400", // Saree
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400", // Kurti
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400", // Top & Jeans
+      "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?w=400", // Dupatta
+      "https://images.unsplash.com/photo-1583391733975-f85a218525b6?w=400", // Lehenga
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400", // Shirt
+      "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=400", // Kids Wear
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400", // Sneakers
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400"  // Earrings
+    ];
+
     const productNames = ["Charvi Voguish Saree", "Banita Ensemble Saree", "Designer Printed Kurti", "Trendy Top & Jeans", "Cotton Printed Dupatta", "Silk Ethnic Lehenga", "Men Formal Shirt", "Kids Wear Combo", "Casual Sneakers", "Silver Oxidized Earrings"];
     
+    // Generating 50 Unique Products with Fixed Static Images
     const products = Array.from({ length: 50 }, (_, i) => {
       const basePrice = Math.floor(Math.random() * 600) + 200;
-      const discount = Math.floor(Math.random() * 20) + 10; // Discount %
+      const discount = Math.floor(Math.random() * 20) + 10;
       const offerPrice = Math.floor(basePrice * (1 - discount / 100));
 
       return {
@@ -174,7 +188,7 @@
         offer: `₹${offerPrice - 30} with 1 Special Offer`,
         rating: (Math.random() * (4.9 - 3.8) + 3.8).toFixed(1),
         reviews: Math.floor(Math.random() * 5000 + 200).toLocaleString(),
-        image: `https://picsum.photos/300/400?random=${i + 30}`,
+        image: sampleImages[i % sampleImages.length],
         isAd: i % 5 === 0
       };
     });
@@ -280,7 +294,7 @@
       }
     }
 
-    // Login Modal Handler (3rd Photo Look)
+    // Login Modal Handler
     function openLoginModal() {
       const modal = document.getElementById("login-modal");
       const content = document.getElementById("modal-content");
