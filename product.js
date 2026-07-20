@@ -558,3 +558,61 @@ price:249,
 rating:4.3,
 image:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600"
 },
+const products = [
+{
+id:1,
+name:"Kitchen Set",
+category:"kitchen",
+price:799,
+image:"https://images.unsplash.com/photo-1556911220-bff31c812dba?w=500"
+},
+{
+id:2,
+name:"Mixer Grinder",
+category:"electronics",
+price:2499,
+image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500"
+},
+{
+id:3,
+name:"LED Bulb",
+category:"electronics",
+price:199,
+image:"https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?w=500"
+},
+{
+id:4,
+name:"Men Shirt",
+category:"shirt",
+price:599,
+image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500"
+},
+{
+id:5,
+name:"Sports Shoes",
+category:"shoes",
+price:1299,
+image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+},
+{
+id:6,
+name:"Cotton Socks",
+category:"socks",
+price:149,
+image:"https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=500"
+},
+{
+id:7,
+name:"Pressure Cooker",
+category:"kitchen",
+price:999,
+image:"https://images.unsplash.com/photo-1584990347449-a1b06d0d4b5a?w=500"
+},
+{
+id:8,
+name:"Electric Iron",
+category:"electronics",
+price:899,
+image:"https://images.unsplash.com/photo-1580894908361-967195033215?w=500"
+}
+];
