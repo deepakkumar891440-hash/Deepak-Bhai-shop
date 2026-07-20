@@ -22,17 +22,18 @@ body {
     z-index: 99;
 }
 
-.user-info { display: flex; align-items: center; gap: 10px; }
-.avatar { font-size: 32px; color: #d4a017; }
+.user-info { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.avatar { font-size: 32px; color: #e53935; } /* RED Color */
 .welcome-text { font-size: 11px; color: #777; }
 .shop-title { font-size: 16px; color: #222; font-weight: 700; }
 
 .header-icons { display: flex; gap: 18px; font-size: 20px; color: #444; }
+.header-icons i { cursor: pointer; }
 .cart-icon-wrap { position: relative; cursor: pointer; }
 .badge {
     position: absolute; top: -8px; right: -8px;
-    background: #d4a017; color: white;
-    font-size: 10px; padding: 2px 5px; border-radius: 50%;
+    background: #e53935; color: white; /* RED Badge */
+    font-size: 10px; padding: 2px 6px; border-radius: 50%; font-weight: bold;
 }
 
 /* Search Bar */
@@ -45,20 +46,20 @@ body {
 .search-box input {
     border: none; background: transparent; width: 100%; outline: none; font-size: 13px;
 }
-.mic-icon, .camera-icon { color: #d4a017; font-size: 16px; }
+.mic-icon, .camera-icon { color: #e53935; font-size: 16px; cursor: pointer; } /* RED Icons */
 
-/* Categories */
+/* Categories Scroll */
 .categories-scroll {
     display: flex; overflow-x: auto; gap: 15px;
     padding: 12px 15px; background: white; border-top: 1px solid #eee;
 }
 .categories-scroll::-webkit-scrollbar { display: none; }
-.cat-item { display: flex; flex-direction: column; align-items: center; min-width: 65px; font-size: 11px; color: #333; }
+.cat-item { display: flex; flex-direction: column; align-items: center; min-width: 65px; font-size: 11px; color: #333; cursor: pointer; }
 .cat-circle {
     width: 48px; height: 48px; border-radius: 50%;
-    background: #fff9e6; border: 1px solid #ffe599;
+    background: #ffebee; border: 1px solid #ffcdd2; /* RED Light Background */
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px; color: #d4a017; margin-bottom: 5px;
+    font-size: 18px; color: #e53935; margin-bottom: 5px; /* RED Icon */
 }
 
 /* Filter Bar */
@@ -68,7 +69,7 @@ body {
     border-top: 1px solid #eee; border-bottom: 1px solid #eee;
 }
 .filter-bar button {
-    border: none; background: transparent; font-size: 12px; font-weight: 600; color: #555;
+    border: none; background: transparent; font-size: 12px; font-weight: 600; color: #555; cursor: pointer;
 }
 
 /* Products Grid */
@@ -80,15 +81,15 @@ body {
     background: white; border-radius: 8px; overflow: hidden;
     box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: relative;
 }
-.product-card img { width: 100%; height: 190px; object-fit: cover; }
+.product-card img { width: 100%; height: 180px; object-fit: cover; }
 .p-info { padding: 10px; }
-.p-title { font-size: 13px; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.p-title { font-size: 13px; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
 .p-price { font-size: 16px; font-weight: bold; color: #222; margin: 4px 0; }
 .rating { background: #388e3c; color: white; font-size: 10px; padding: 2px 6px; border-radius: 10px; display: inline-block; }
 
 .card-btns { display: flex; gap: 5px; margin-top: 8px; }
-.btn-cart-sm { flex: 1; background: #fff9e6; color: #d4a017; border: 1px solid #d4a017; padding: 6px; font-size: 11px; font-weight: bold; border-radius: 4px; }
-.btn-buy-sm { flex: 1; background: #d4a017; color: white; border: none; padding: 6px; font-size: 11px; font-weight: bold; border-radius: 4px; }
+.btn-cart-sm { flex: 1; background: #ffebee; color: #e53935; border: 1px solid #e53935; padding: 6px; font-size: 11px; font-weight: bold; border-radius: 4px; cursor: pointer; }
+.btn-buy-sm { flex: 1; background: #e53935; color: white; border: none; padding: 6px; font-size: 11px; font-weight: bold; border-radius: 4px; cursor: pointer; } /* RED Button */
 
 /* Bottom Nav */
 .bottom-nav {
@@ -98,10 +99,10 @@ body {
 }
 .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 10px; color: #666; cursor: pointer; }
 .nav-item i { font-size: 18px; margin-bottom: 2px; }
-.nav-item.active { color: #d4a017; }
+.nav-item.active { color: #e53935; } /* RED Active Nav */
 
 /* Modal */
 .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 200; }
 .modal-content { background: white; padding: 20px; border-radius: 10px; width: 85%; max-width: 350px; position: relative; }
 .close { position: absolute; right: 15px; top: 10px; font-size: 22px; cursor: pointer; }
-.btn-checkout { width: 100%; background: #d4a017; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px; cursor: pointer; }
+.btn-checkout { width: 100%; background: #e53935; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px; cursor: pointer; } /* RED Checkout */
