@@ -1,56 +1,26 @@
-// Add To Cart function me Login popup trigger
-function addToCart(id) {
-    if (!isLoggedIn) {
-        openModal("signupModal");
-        return;
-    }
-    const item = products.find(p => p.id === id);
-    cart.push(item);
-    updateCartUI();
-    alert(`${item.name} Cart me add ho gaya!`);
-}
-
-// User Login Logic
-function saveUser() {
-    const email = document.getElementById("userEmail").value;
-    const pass = document.getElementById("userPassword").value;
-    
-    if (email && pass) {
-        isLoggedIn = true;
-        document.getElementById("navUserText").innerText = email.split('@')[0];
-        closeModal("signupModal");
-        alert("🎉 Successfully Logged In!");
-    } else {
-        alert("Kripya Email aur Password dono bharein!");
-    }
-}
-// 100% Direct Working Images Array
-const workingImages = [
-    "https://picsum.photos/id/1025/500/500",
-    "https://picsum.photos/id/64/500/500",
-    "https://picsum.photos/id/1062/500/500",
-    "https://picsum.photos/id/21/500/500",
-    "https://picsum.photos/id/1070/500/500",
-    "https://picsum.photos/id/445/500/500",
-    "https://picsum.photos/id/325/500/500",
-    "https://picsum.photos/id/250/500/500",
-    "https://picsum.photos/id/175/500/500",
-    "https://picsum.photos/id/96/500/500"
+// Reliable Photos Array
+const photos = [
+    "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500",
+    "https://images.unsplash.com/photo-1583391733975-ac821034c4f0?w=500",
+    "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=500",
+    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500",
+    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+    "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500"
 ];
 
 function generate100Products() {
-    const categories = ["Saree", "Kurtis", "Jewellery", "Electronics", "Shoes", "Kids", "Makeup", "Handbag", "Watch", "MenShirts"];
-
+    const categories = ["Saree", "Kurtis", "Kids", "Electronics", "Jewellery", "Shoes", "Makeup"];
     let items = [];
     for (let i = 1; i <= 100; i++) {
-        let catIndex = (i - 1) % categories.length;
+        let index = (i - 1) % categories.length;
         items.push({
             id: i,
-            name: `${categories[catIndex]} Item #${i}`,
-            category: categories[catIndex],
+            name: `${categories[index]} Item #${i}`,
+            category: categories[index],
             price: Math.floor(Math.random() * 800) + 199,
             rating: (Math.random() * (4.8 - 3.8) + 3.8).toFixed(1) + " ★",
-            image: workingImages[catIndex]
+            image: photos[index]
         });
     }
     return items;
@@ -65,7 +35,7 @@ function renderProducts(items) {
     const container = document.getElementById("productsContainer");
     if (!container) return;
     container.innerHTML = "";
-    
+
     if (items.length === 0) {
         container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; padding: 30px; color: #888;">Koi product nahi mila!</p>`;
         return;
@@ -89,25 +59,17 @@ function renderProducts(items) {
     });
 }
 
-// Live Search Logic
+// Search
 function searchProducts() {
-    const searchInput = document.getElementById("searchInput");
-    if (!searchInput) return;
-
-    const query = searchInput.value.toLowerCase().trim();
-    const filtered = products.filter(p => 
-        p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)
-    );
+    const query = document.getElementById("searchInput").value.toLowerCase().trim();
+    const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
     renderProducts(filtered);
 }
 
 // Category Filter
 function filterByCategory(cat) {
-    if (cat === 'All') {
-        renderProducts(products);
-    } else {
-        renderProducts(products.filter(p => p.category.toLowerCase() === cat.toLowerCase()));
-    }
+    if (cat === 'All') renderProducts(products);
+    else renderProducts(products.filter(p => p.category.toLowerCase() === cat.toLowerCase()));
 }
 
 // Sorting
@@ -118,8 +80,12 @@ function sortProducts(type) {
     renderProducts(sorted);
 }
 
-// Cart Functions
+// Add to Cart (Trigger Login Modal if not logged in)
 function addToCart(id) {
+    if (!isLoggedIn) {
+        openModal("signupModal");
+        return;
+    }
     const item = products.find(p => p.id === id);
     cart.push(item);
     updateCartUI();
@@ -137,7 +103,7 @@ function updateCartUI() {
     let total = 0;
     cart.forEach(item => {
         total += item.price;
-        cartItems.innerHTML += `<p style="margin:8px 0; font-size:14px;">${item.name} - <b>₹${item.price}</b></p>`;
+        cartItems.innerHTML += `<p style="margin:8px 0; font-size:13px;">${item.name} - <b>₹${item.price}</b></p>`;
     });
 
     const cartTotal = document.getElementById("cartTotal");
@@ -159,44 +125,43 @@ function closeModal(id) {
     if (modal) modal.style.display = "none";
 }
 
-// User Sign-up
+// User Login Save
 function saveUser() {
-    const name = document.getElementById("userName").value;
-    if (name) {
+    const email = document.getElementById("userEmail").value;
+    const pass = document.getElementById("userPassword").value;
+
+    if (email && pass) {
         isLoggedIn = true;
-        const navUser = document.getElementById("navUserText");
-        if (navUser) navUser.innerText = name;
+        document.getElementById("navUserText").innerText = email.split('@')[0];
         closeModal("signupModal");
-        alert("Account Successfully Ban Gaya!");
+        alert("🎉 Successfully Logged In!");
     } else {
-        alert("Kripya apna naam daalein!");
+        alert("Kripya Email aur Password dono bharein!");
     }
 }
 
-// Checkout Logic
+// Checkout
 function buyNow(id) {
+    if (!isLoggedIn) {
+        openModal("signupModal");
+        return;
+    }
     addToCart(id);
     checkout();
 }
 
 function checkout() {
-    if (!isLoggedIn) {
-        alert("Pehle Sign-Up / Login karein!");
-        toggleCart();
-        openModal("signupModal");
-        return;
-    }
     if (cart.length === 0) {
         alert("Aapka Cart khali hai!");
         return;
     }
-
     alert("🎉 Order Confirmed! Deepak Bhai Shop se khareedne ke liye shukriya.");
     cart = [];
     updateCartUI();
     closeModal("cartModal");
 }
 
+// Page Load
 document.addEventListener("DOMContentLoaded", () => {
     renderProducts(products);
 });
