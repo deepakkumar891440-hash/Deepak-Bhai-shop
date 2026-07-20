@@ -646,3 +646,31 @@
     </script>
 </body>
 </html>
+let cart = [];
+
+function addToCart(name, price, image) {
+  cart.push({name, price, image});
+  document.getElementById('cart-count').innerText = cart.length;
+  alert(name + " Cart me add ho gaya!");
+}
+
+function showCart() {
+  if(cart.length == 0){
+    alert("Cart khali hai");
+    return;
+  }
+  
+  let msg = "Aapka Order:\n\n";
+  let total = 0;
+  cart.forEach((item, i) => {
+    msg += `${i+1}. ${item.name} - ₹${item.price}\n`;
+    total += item.price;
+  });
+  msg += `\nTotal: ₹${total}`;
+  msg += `\n\nOrder karne ke liye OK dabao`;
+  
+  if(confirm(msg)){
+    let whatsappMsg = encodeURIComponent(msg);
+    window.open(`https://wa.me/9278263293?text=${whatsappMsg}`); // yaha apna number daal
+  }
+}
