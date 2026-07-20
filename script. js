@@ -1,66 +1,146 @@
-function order() {
-    alert("🎉 Order Confirmed!\n\n✅ Your order has been placed\n\nThank you for shopping at 🛒 Deepak Bhai Shop");
-}
+// ===============================
+// Deepak Bhai Shop
+// script.js - Part 1
+// ===============================
 
+// Products Container
+const productsContainer = document.getElementById("products");
 
-// Menu Button
-document.querySelector(".menu").onclick = function(){
-    alert("☰ Menu Open\n\nCategories:\nFashion\nMobile\nShoes\nBeauty");
-}
+// Order Popup
+const orderPopup = document.getElementById("orderPopup");
+const closePopup = document.getElementById("closePopup");
 
+// Cart
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// CartButtond
-document.querySelector(".cart").onclick = function(){
-    showCart();
-}
+// Wishlist
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
+// Render Products
+function showProducts() {
 
-// Search
-let search = document.querySelector("input");
+productsContainer.innerHTML = "";
 
-search.addEventListener("keyup", function(){
+products.forEach((item)=>{
 
-    let value = search.value.toLowerCase();
+productsContainer.innerHTML += `
 
-    let products = document.querySelectorAll(".card");
+<div class="product-card">
 
-    products.forEach(function(product){
+<div class="wishlist" onclick="addWishlist(${item.id})">
+❤️
+</div>
 
-        let name = product.innerText.toLowerCase();
+<img src="${item.image}" alt="${item.name}">
 
-        if(name.includes(value)){
-            product.style.display="block";
-        }
-        else{
-            product.style.display="none";
-        }
+<h4>${item.name}</h4>
 
-    });
+<div class="price">
+
+<span class="new-price">
+₹${item.price}
+</span>
+
+<span class="old-price">
+₹${item.oldPrice}
+</span>
+
+<span class="off">
+${item.discount}
+</span>
+
+</div>
+
+<div class="rating">
+⭐ ${item.rating} (${item.reviews})
+</div>
+
+<div class="buttons">
+
+<button
+class="cart-btn"
+onclick="addCart(${item.id})">
+
+🛒 Cart
+
+</button>
+
+<button
+class="order-btn"
+onclick="orderNow()">
+
+Order Now
+
+</button>
+
+</div>
+
+</div>
+
+`;
 
 });
-let cart = [];
 
-function addToCart(name, price) {
-    cart.push({
-        product: name,
-        amount: price
-    });
-
-    alert("🛒 " + name + " Cart me add ho gaya!");
 }
 
-function showCart() {
+// Start Website
+showProducts();
+// ===============================
+// Cart Functions
+// ===============================
 
-    if(cart.length === 0){
-        alert("🛒 Cart abhi empty hai");
-        return;
-    }
+function addCart(id){
 
-    let list = "Your Cart:\n\n";
+const product = products.find(item => item.id === id);
 
-    cart.forEach((item, index)=>{
-        list += (index+1) + ". " + item.product + " - " + item.amount + "\n";
-    });
+cart.push(product);
 
-    alert(list);
+localStorage.setItem("cart", JSON.stringify(cart));
+
+alert("🛒 Product Added To Cart");
+
 }
+
+// ===============================
+// Wishlist Functions
+// ===============================
+
+function addWishlist(id){
+
+const product = products.find(item => item.id === id);
+
+wishlist.push(product);
+
+localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+alert("❤️ Added To Wishlist");
+
+}
+
+// ===============================
+// Order Popup
+// ===============================
+
+function orderNow(){
+
+orderPopup.style.display = "flex";
+
+}
+
+closePopup.addEventListener("click",()=>{
+
+orderPopup.style.display="none";
+
+});
+
+// Close Popup Outside
+
+window.addEventListener("click",(e)=>{
+
+if(e.target===orderPopup){
+
+orderPopup.style.display="none";
+
+}
+
+});
