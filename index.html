@@ -3,97 +3,82 @@
 <head>
 <title>Deepak Bhai Shop</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {margin:0; font-family:Arial; background:#f5f5f5; padding-bottom:60px;}
-.header {background:#000; color:white; padding:15px; text-align:center; font-size:20px; font-weight:bold;}
-.search {width:95%; padding:10px; border-radius:10px; border:1px solid #ddd; margin:10px;}
-.categories {display:flex; gap:15px; padding:10px; overflow-x:auto; background:white; justify-content:center;}
-.categories p {margin:0; font-size:12px;}
-.deal-title {font-size:18px; font-weight:bold; padding:15px 10px; display:flex; justify-content:space-between;}
-.deal-title span:last-child {color:#000000; font-size:14px;}
-.products {display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:0 10px;}
-.card {background:white; border-radius:8px; padding:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); position:relative;}
-.off {background:red; color:white; padding:3px 6px; border-radius:4px; font-size:11px; font-weight:bold; position:absolute; top:8px; left:8px;}
-.card img {width:100%; height:180px; object-fit:cover; border-radius:5px; background:#eee;}
-.price {font-weight:bold; font-size:16px;}
-.offer {color:green; font-size:12px;}
-.brand {color:gray; font-size:12px;}
-.btn {width:100%; background:#000; color:white; border:none; padding:8px; border-radius:5px; margin-top:5px; font-weight:bold;}
-.bottom {position:fixed; bottom:0; width:100%; background:#000000; color:white; display:flex; justify-content:space-around; padding:8px 0; font-size:11px; text-align:center;}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="header">Deepak Bhai Shop</div>
-
-<input class="search" type="text" placeholder="Search by Keyword or Product ID">
-
-<div class="categories">
-  <div><p>👗</p><p>Saree</p></div>
-  <div><p>👚</p><p>Kurtis</p></div>
-  <div><p>👔</p><p>Men</p></div>
-  <div><p>🏠</p><p>Home</p></div>
-  <div><p>💄</p><p>Beauty</p></div>
+<div class="topbar">
+  <div class="left">
+    <img src="https://via.placeholder.com/35" class="profile">
+    <div class="refer" onclick="signIn()">🎁 Refer and Earn</div>
+  </div>
+  <div class="right">
+    <span onclick="signIn()">♡</span>
+    <span onclick="signIn()">🛒<sup>1</sup></span>
+  </div>
 </div>
 
-<div class="deal-title">
-  <span>🏷️ Deal of the Day</span>
-  <span>View All ></span>
+<div class="searchbar">
+  🔍 <input type="text" placeholder="Search by Keyword or Product ID">
+  <span>🎤</span><span>📷</span>
+</div>
+
+<div class="cat-row">
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/ADD8E6/000?text=🌿"><p>All Categ...</p></div>
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFE4E1/000?text=👗"><p>Kurtis & D...</p></div>
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFFACD/000?text=👶"><p>Kids</p></div>
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFDAB9/000?text=🏠"><p>Home</p></div>
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/F0E68C/000?text=💄"><p>Beauty</p></div>
+</div>
+
+<div class="cat-row">
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/D3D3D3/000?text=🍳"><p>Kitchen U...</p></div>
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFC0CB/000?text=🥻"><p>Saree</p></div>
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/FFA07A/000?text=👚"><p>Western ...</p></div>
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/DAA520/000?text=💍"><p>Jewellery</p></div>
+  <div onclick="signIn()"><img src="https://via.placeholder.com/60/87CEEB/000?text=👔"><p>Men Fashi...</p></div>
+</div>
+
+<div class="filterbar">
+  <div onclick="signIn()">⇅ Sort</div>
+  <div onclick="signIn()">Category ⌄</div>
+  <div onclick="signIn()">Gender ⌄</div>
+  <div onclick="signIn()">☰ Filters</div>
 </div>
 
 <div class="products">
-
   <div class="card">
-    <span class="off">40% OFF</span>
-    <img src="https://via.placeholder.com/200x180/000000/ffffff?text=Saree1">
-    <p><b>Charvi Voguish Saree</b></p>
+    <img src="https://via.placeholder.com/200x250/FFD700/000?text=Saree1">
+    <span class="heart" onclick="signIn()">♡</span>
+    <p class="name">Charvi Voguish Sarees</p>
     <p class="price">₹451</p>
     <p class="offer">₹421 with 1 Special Offer</p>
-    <button class="btn" onclick="signIn()">View</button>
+    <p class="rating">🟢 4.2 ★ (5,991)</p>
   </div>
 
   <div class="card">
-    <span class="off">35% OFF</span>
-    <img src="https://via.placeholder.com/200x180/333333/ffffff?text=Saree2">
-    <p><b>Banita Ensemble Saree</b></p>
+    <img src="https://via.placeholder.com/200x250/FF1493/fff?text=Saree2">
+    <span class="heart" onclick="signIn()">♡</span>
+    <p class="ad">Ad</p> <p class="name">Banita Ensemble Sarees</p>
     <p class="price">₹546</p>
     <p class="offer">₹485 with Offer</p>
-    <button class="btn" onclick="signIn()">View</button>
+    <p class="rating">🟢 4.4 ★ (2,100)</p>
   </div>
+</div>
 
-  <div class="card">
-    <span class="off">40% OFF</span>
-    <img src="https://via.placeholder.com/200x180/000000/ffffff?text=Hoodie">
-    <p class="brand">H&M</p>
-    <p><b>Oversized Hoodie</b></p>
-    <p class="price">₹599</p>
-    <button class="btn" onclick="signIn()">Order</button>
-  </div>
-
-  <div class="card">
-    <span class="off">35% OFF</span>
-    <img src="https://via.placeholder.com/200x180/333/ffffff?text=Shirt">
-    <p class="brand">ZARA</p>
-    <p><b>Formal Shirt</b></p>
-    <p class="price">₹799</p>
-    <button class="btn" onclick="signIn()">Order</button>
-  </div>
-
+<div class="refer-popup">
+  <span onclick="this.parentElement.style.display='none'">X</span>
+  <img src="https://via.placeholder.com/300x200/FFD700/000?text=REFER+&+EARN+₹100">
 </div>
 
 <div class="bottom">
-  <div>🏠<br>Home</div>
-  <div>👕<br>Categories</div>
-  <div>⭐<br>Mall</div>
-  <div>📹<br>Video</div>
-  <div>📦<br>Orders</div>
+  <div class="active"><p>🏠</p><p>Home</p></div>
+  <div onclick="signIn()"><p>👕</p><p>Categories</p></div>
+  <div onclick="signIn()"><p>⭐</p><p>Mall</p></div>
+  <div onclick="signIn()"><p>📹</p><p>Video Finds</p></div>
+  <div onclick="signIn()"><p>📦</p><p>My Orders</p></div>
 </div>
 
-<script>
-function signIn() {
-  alert("Please Sign In to Continue 🔒\nBhai ye sirf demo site hai. Order nahi hoga");
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
