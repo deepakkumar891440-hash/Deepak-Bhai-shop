@@ -106,3 +106,71 @@ body {
 .modal-content { background: white; padding: 20px; border-radius: 10px; width: 85%; max-width: 350px; position: relative; }
 .close { position: absolute; right: 15px; top: 10px; font-size: 22px; cursor: pointer; }
 .btn-checkout { width: 100%; background: #e53935; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px; cursor: pointer; } /* RED Checkout */
+/* Card Popup Style (Exact like friend's site) */
+.modal-content-card {
+    background: #ffffff;
+    padding: 28px 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 360px;
+    position: relative;
+    border-top: 4px solid #e53935; /* Red top border */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.close-card {
+    position: absolute; right: 15px; top: 10px;
+    font-size: 22px; cursor: pointer; color: #888;
+}
+
+.card-title {
+    font-size: 22px; font-weight: 800; color: #0f172a;
+    text-align: center; margin-bottom: 6px;
+}
+
+.card-subtitle {
+    font-size: 12px; color: #64748b;
+    text-align: center; margin-bottom: 20px; line-height: 1.4;
+}
+
+.input-group {
+    display: flex; flex-direction: column;
+    margin-bottom: 14px; text-align: left;
+}
+
+.input-group label {
+    font-size: 12px; font-weight: 600; color: #1e293b; margin-bottom: 5px;
+}
+
+.label-row {
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.forgot-pass {
+    font-size: 11px; color: #e53935; text-decoration: none; font-weight: 600;
+}
+
+.input-group input {
+    padding: 10px 12px; border: 1px solid #cbd5e1;
+    border-radius: 6px; font-size: 13px; outline: none;
+}
+
+.input-group input:focus {
+    border-color: #e53935;
+}
+
+.btn-card-login {
+    width: 100%; background: #e53935; color: white;
+    border: none; padding: 11px; font-size: 13px;
+    font-weight: 700; border-radius: 6px; cursor: pointer; margin-top: 8px;
+}
+
+.card-footer-text {
+    font-size: 12px; color: #64748b;
+    text-align: center; margin-top: 18px;
+}
+
+.signup-link {
+    color: #e53935; font-weight: 700; cursor: pointer;
+}
+
