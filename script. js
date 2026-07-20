@@ -1,3 +1,40 @@
 function order() {
-    alert("✅ Order Confirmed!\n\nThank you for shopping at Deepak Bhai Shop");
+    alert("🎉 Order Confirmed!\n\n✅ Your order has been placed\n\nThank you for shopping at 🛒 Deepak Bhai Shop");
 }
+
+
+// Menu Button
+document.querySelector(".menu").onclick = function(){
+    alert("☰ Menu Open\n\nCategories:\nFashion\nMobile\nShoes\nBeauty");
+}
+
+
+// Cart Button
+document.querySelector(".cart").onclick = function(){
+    alert("🛒 Your Cart is Empty\n\nAdd products to cart first");
+}
+
+
+// Search
+let search = document.querySelector("input");
+
+search.addEventListener("keyup", function(){
+
+    let value = search.value.toLowerCase();
+
+    let products = document.querySelectorAll(".card");
+
+    products.forEach(function(product){
+
+        let name = product.innerText.toLowerCase();
+
+        if(name.includes(value)){
+            product.style.display="block";
+        }
+        else{
+            product.style.display="none";
+        }
+
+    });
+
+});
