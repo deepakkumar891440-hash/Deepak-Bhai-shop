@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>दीपक भाई शॉप ऐप</title>
+    <title>Deepak Bhai Shop app</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -416,8 +416,8 @@
     <!-- Splash Screen -->
     <div id="splash-screen">
         <div class="logo-circle">DB</div>
-        <h1>दीपक भाई शॉप ऐप</h1>
-        <p>वेलकम टू शॉप ऐप</p>
+        <h1>Deepak Bhai Shop aap</h1>
+        <p>Welcome to the Deepak Bhai Shop aap</p>
     </div>
 
     <!-- Header -->
@@ -673,4 +673,15 @@ function showCart() {
     let whatsappMsg = encodeURIComponent(msg);
     window.open(`https://wa.me/9278263293?text=${whatsappMsg}`); // yaha apna number daal
   }
+}
+let cart = [];
+
+function addToCart(name, price, image) {
+  cart.push({name, price, image});
+  document.getElementById('cart-count').innerText = cart.length;
+  alert(name + " Cart me add ho gaya!");
+}
+
+function showCart() {
+  alert("Cart me " + cart.length + " item hai");
 }
