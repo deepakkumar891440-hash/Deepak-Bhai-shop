@@ -1,3 +1,29 @@
+// Add To Cart function me Login popup trigger
+function addToCart(id) {
+    if (!isLoggedIn) {
+        openModal("signupModal");
+        return;
+    }
+    const item = products.find(p => p.id === id);
+    cart.push(item);
+    updateCartUI();
+    alert(`${item.name} Cart me add ho gaya!`);
+}
+
+// User Login Logic
+function saveUser() {
+    const email = document.getElementById("userEmail").value;
+    const pass = document.getElementById("userPassword").value;
+    
+    if (email && pass) {
+        isLoggedIn = true;
+        document.getElementById("navUserText").innerText = email.split('@')[0];
+        closeModal("signupModal");
+        alert("🎉 Successfully Logged In!");
+    } else {
+        alert("Kripya Email aur Password dono bharein!");
+    }
+}
 // 100% Direct Working Images Array
 const workingImages = [
     "https://picsum.photos/id/1025/500/500",
