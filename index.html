@@ -1,97 +1,340 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Deepak Bhai Shop</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deepak Bhai Shop</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
 <body>
 
-<header>
-<div class="top">
-<div class="profile">👨</div>
-<h2>🛒 Deepak Bhai Shop</h2>
-<button>🎁 Refer & Earn</button>
-<div class="icons">♡ 🛒</div>
+<header class="header">
+
+<div class="top-bar">
+
+<button class="menu-btn">
+<i class="fas fa-bars"></i>
+</button>
+
+<div class="logo">
+<h2>🛍 Deepak Bhai Shop</h2>
 </div>
+
+<div class="top-icons">
+
+<i class="far fa-heart"></i>
+
+<i class="fas fa-shopping-cart"></i>
+
+</div>
+
+</div>
+
+<div class="search-box">
 
 <div class="search">
-🔍 Search by Keyword or Product ID 🎤 📷
+
+<i class="fas fa-search"></i>
+
+<input
+type="text"
+placeholder="Search for Products">
+
+<i class="fas fa-microphone"></i>
+
+<i class="fas fa-camera"></i>
+
 </div>
+
+</div>
+
 </header>
 
+<section class="refer-box">
 
-<div class="categories">
+<div class="refer">
 
-<div>🌱<p>All</p></div>
-<div>👗<p>Kurtis</p></div>
-<div>🧒<p>Kids</p></div>
-<div>🏠<p>Home</p></div>
-<div>💄<p>Beauty</p></div>
-<div>👡<p>Fashion</p></div>
-<div>🍳<p>Kitchen</p></div>
+🎁 Refer & Earn ₹100
 
 </div>
 
+</section>
 
-<div class="filters">
-<button>↕ Sort</button>
-<button>Category⌄</button>
-<button>Gender⌄</button>
-<button>☰ Filters</button>
-</div>
+<section class="banner-slider">
 
+<div class="slider">
 
-<div class="products">
+<img src="https://picsum.photos/900/350?1">
 
-<div class="card">
-<img src="https://via.placeholder.com/200">
-<h3>Beautiful Saree</h3>
-<h2>₹451</h2>
-<p>⭐ 4.2 (5991)</p>
-<button>Order Now</button>
-</div>
+<img src="https://picsum.photos/900/350?2">
 
-
-<div class="card">
-<img src="https://via.placeholder.com/200">
-<h3>Designer Saree</h3>
-<h2>₹546</h2>
-<p>⭐ 4.4 (1200)</p>
-<button>Order Now</button>
-</div>
-
-
-<div class="card">
-<img src="https://via.placeholder.com/200">
-<h3>Women Dress</h3>
-<h2>₹399</h2>
-<p>⭐ 4.5</p>
-<button>Order Now</button>
-</div>
-
-
-<div class="card">
-<img src="https://via.placeholder.com/200">
-<h3>New Fashion</h3>
-<h2>₹599</h2>
-<p>⭐ 4.3</p>
-<button>Order Now</button>
-</div>
-
+<img src="https://picsum.photos/900/350?3">
 
 </div>
 
+</section>
 
-<footer>
-<div>🏠<br>Home</div>
-<div>👗<br>Categories</div>
-<div>⭐<br>Mall</div>
-<div>🎬<br>Video Finds</div>
-<div>📦<br>My Orders</div>
-</footer>
+<section class="categories">
 
+<div class="category">
+
+<div class="cat-icon">👗</div>
+
+<p>Fashion</p>
+
+</div>
+
+<div class="category">
+
+<div class="cat-icon">💄</div>
+
+<p>Beauty</p>
+
+</div>
+
+<div class="category">
+
+<div class="cat-icon">🏠</div>
+
+<p>Home</p>
+
+</div>
+
+<div class="category">
+
+<div class="cat-icon">🍳</div>
+
+<p>Kitchen</p>
+
+</div>
+
+<div class="category">
+
+<div class="cat-icon">👶</div>
+
+<p>Kids</p>
+
+</div>
+
+</section>
+
+<section class="title">
+
+<h3>Trending Products</h3>
+
+</section>
+
+<section class="products" id="products">
+<!-- Product 1 -->
+<div class="product-card">
+
+<div class="wishlist">
+<i class="far fa-heart"></i>
+</div>
+
+<img src="https://picsum.photos/300/300?random=1" alt="Product">
+
+<h4>Beautiful Saree</h4>
+
+<div class="price">
+<span class="new-price">₹499</span>
+<span class="old-price">₹999</span>
+<span class="off">50% OFF</span>
+</div>
+
+<div class="rating">
+⭐ 4.5 (12,540)
+</div>
+
+<div class="buttons">
+
+<button class="cart-btn">
+🛒 Cart
+</button>
+
+<button class="order-btn">
+Order Now
+</button>
+
+</div>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product-card">
+
+<div class="wishlist">
+<i class="far fa-heart"></i>
+</div>
+
+<img src="https://picsum.photos/300/300?random=2" alt="Product">
+
+<h4>Women Kurti</h4>
+
+<div class="price">
+<span class="new-price">₹399</span>
+<span class="old-price">₹799</span>
+<span class="off">50% OFF</span>
+</div>
+
+<div class="rating">
+⭐ 4.3 (9,430)
+</div>
+
+<div class="buttons">
+
+<button class="cart-btn">
+🛒 Cart
+</button>
+
+<button class="order-btn">
+Order Now
+</button>
+
+</div>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product-card">
+
+<div class="wishlist">
+<i class="far fa-heart"></i>
+</div>
+
+<img src="https://picsum.photos/300/300?random=3" alt="Product">
+
+<h4>Kitchen Set</h4>
+
+<div class="price">
+<span class="new-price">₹699</span>
+<span class="old-price">₹1299</span>
+<span class="off">46% OFF</span>
+</div>
+
+<div class="rating">
+⭐ 4.6 (5,892)
+</div>
+
+<div class="buttons">
+
+<button class="cart-btn">
+🛒 Cart
+</button>
+
+<button class="order-btn">
+Order Now
+</button>
+
+</div>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product-card">
+
+<div class="wishlist">
+<i class="far fa-heart"></i>
+</div>
+
+<img src="https://picsum.photos/300/300?random=4" alt="Product">
+
+<h4>Sports Shoes</h4>
+
+<div class="price">
+<span class="new-price">₹899</span>
+<span class="old-price">₹1599</span>
+<span class="off">44% OFF</span>
+</div>
+
+<div class="rating">
+⭐ 4.7 (18,950)
+</div>
+</section>
+
+<!-- Order Confirmation Popup -->
+<div class="order-popup" id="orderPopup">
+
+    <div class="popup-box">
+
+        <div class="popup-icon">✅</div>
+
+        <h2>Order Confirmed</h2>
+
+        <p>
+            Thank you for visiting <b>Deepak Bhai Shop</b>.<br>
+            This is a demo website only.<br>
+            No real order has been placed.
+        </p>
+
+        <button id="closePopup">
+            OK
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Bottom Navigation -->
+
+<nav class="bottom-nav">
+
+    <a href="index.html" class="active">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="category.html">
+        <i class="fas fa-th-large"></i>
+        <span>Categories</span>
+    </a>
+
+    <a href="wishlist.html">
+        <i class="far fa-heart"></i>
+        <span>Wishlist</span>
+    </a>
+
+    <a href="cart.html">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Cart</span>
+    </a>
+
+    <a href="profile.html">
+        <i class="far fa-user"></i>
+        <span>Profile</span>
+    </a>
+
+</nav>
+
+<script src="products.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
+
+
+<div class="buttons">
+
+<button class="cart-btn">
+🛒 Cart
+</button>
+
+<button class="order-btn">
+Order Now
+</button>
+
+</div>
+
+</div>
